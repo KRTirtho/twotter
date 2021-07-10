@@ -1,4 +1,7 @@
 {
+  "plugins":[
+    "@vuedx/typescript-plugin-vue"
+  ],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -11,6 +14,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "incremental": true,
+    "noEmit": true,
     "baseUrl": ".",
     "types": [
       "webpack-env"
