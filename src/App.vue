@@ -3,23 +3,22 @@
     <router-link to="/">
       <h2>Twotter</h2>
     </router-link>
-    <h4>{{ user.username }}</h4>
+    <h4 v-if="user">{{ user.username }}</h4>
   </nav>
   <router-view />
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { computed, defineComponent } from "vue";
+import { useStore } from "vuex";
+import { UserStore } from "./store";
 
 export default defineComponent({
   name: "App",
   setup() {
-    const state = reactive({
-      user: {
-        username: "El Martinez",
-      },
-    });
-    return { ...state };
+    const store = useStore<UserStore>();
+    const user = computed(() => store.state.user);
+    return { user };
   },
 });
 </script>
